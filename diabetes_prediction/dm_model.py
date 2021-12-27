@@ -4,7 +4,7 @@ import streamlit as st
 from sklearn.ensemble import RandomForestClassifier
 import pickle
 
-rf = pickle.load(open('rf_model.sav', 'rb'))
+rf = pickle.load(open('rf_model.pkl', 'rb'))
 
 
 def user_inputs():
