@@ -15,9 +15,9 @@ def user_inputs():
     # calculate bmi
     st.caption('Enter your height')
     col1, col2 = st.columns(2)
-    foot = col1.number_input('Feet', max_value=8)
+    foot = col1.number_input('Feet', max_value=8, min_value=1)
     inches = col2.number_input('inches', min_value=0, max_value=11)
-    lbs = st.number_input('Enter your weights in pound', step=5)
+    lbs = st.number_input('Enter your weights in pound', step=5, min_value=10)
     height_in = foot*12 + inches
     bmi = (703*lbs)/height_in**2
 
@@ -119,7 +119,8 @@ You can get the original dataset [here](https://www.kaggle.com/tigganeha4/diabet
 """)
 data = user_inputs()
 result = rf.predict(data)
-if result == 0:
-    st.title('ဝမ်းသာပါတယ်။ သင့်မှာ ဆီးချိုလက္ခဏာများ မရှိပါ။')
-if result == 1:
-    st.title('ဆီးချိုဖြစ်နိုင်သည်။ နီးစပ်ရာတွင် သွေးဖောက်စစ်ရန် လိုအပ်သည်။ ')
+if st.button('CHECK'):
+    if result == 0:
+        st.title('ဝမ်းသာပါတယ်။ သင့်မှာ ဆီးချိုလက္ခဏာများ မရှိပါ။')
+    if result == 1:
+        st.title('ဆီးချိုဖြစ်နိုင်သည်။ နီးစပ်ရာတွင် သွေးဖောက်စစ်ရန် လိုအပ်သည်။ ')
